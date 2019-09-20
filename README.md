@@ -1,6 +1,6 @@
 # kwcmd ———— 一款在windows环境下快速帮助你code的命令行程序
 
-- 版本号：v0.1.2
+- 版本号：v0.1.3
 
 - 作者：keywet06@wekw
 
