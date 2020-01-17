@@ -44,8 +44,8 @@ int main(int n, char* a[]) {
         puts("The command syntax is not right.");
         puts("");
     }
-    puts("$ ---- A program that can help you to code");
-    puts("\tVersion: v0.1.4");
+    puts("kwcmd ---- A program that can help you to code");
+    puts("\tVersion: v0.1.5");
     puts("\tWriter: keywet06");
     puts("");
     puts("Help infomation");
