@@ -46,13 +46,36 @@ std::pair<std::string, std::string> decFileName(std::string x) {
 }
 void compile(std::string first, std::string seconed) {
     if (seconed == (std::string)("cpp")) {
-        
+        std::string s = (std::string)("g++ -o \"") + (std::string)(first) +
+          (std::string)("\" \"") + (std::string)(first) +
+          (std::string)(".cpp\" -lm -O3");
+        system(s.data());
     } else {
-        printf("\033[33mError: KwCode doesn't support \"%s\" language.\033[0m\n", seconed);
+        printf("\e[33mError: KwCode doesn't support \"%s\" language.\e[0m\n",
+          seconed.data());
     }
 }
 void run(std::string first, std::string seconed) {
-
+    if (seconed == (std::string)("cpp")) {
+        std::string s = (std::string)("g++ -o \"") + (std::string)(first) +
+        (std::string)("\" \"") + (std::string)(first) +
+        (std::string)(".cpp\" -lm -O3");
+        system(s.data());
+        printf("Complie is over.\n");
+        s = '"' + (std::string)(first) + '"';
+        int c = clock();
+        std::cout << s << std::endl;
+        system(s.data());
+        printf("The program is over in %dms.\n", clock() - c);
+        while (_kbhit()) {
+            getchar();
+        }
+        printf("Press any key to continue . . .");
+        _getch();
+    } else {
+        printf("\e[31mError: KwCode doesn't support \"%s\" language.\e[0m\n",
+          seconed.data());
+    }
 }
 int main(int n, char* a[]) {
     int f = 0;
@@ -67,58 +90,44 @@ int main(int n, char* a[]) {
         } else if (n == 3) {
             help((std::string)(a[2]));
         } else {
-            printf("\033[33mError: Unknown \"%s\" for command \"help\".\033[0m\n", a[2]);
+            printf("\e[33mError: Unknown \"%s\" for command \"help\".\e[0m\n",
+              a[2]);
         }
     } else if (tmp == (std::string)("version")) {
         if (n == 2) {
             version();
         } else {
-            printf("\033[33mError: Unknown \"%s\" for command \"version\".\033[0m\n", a[2]);
+            printf("\e[33mError: Unknown \"%s\" for command \"version\".\e[0m"
+            "\n", a[2]);
         }
     } else if (tmp == (std::string)("clear")) {
         if (n == 2) {
             clear();
         } else {
-            printf("\033[33mError: Unknown \"%s\" for command \"clear\".\033[0m\n", a[2]);
+            printf("\e[33mError: Unknown \"%s\" for command \"clear\".\e[0m\n",
+              a[2]);
         }
     } else if (tmp == (std::string)("run")) {
         if (n == 2) {
-            printf("\033[33mError: Miss file name.\003[0m\n");
+            printf("\e[33mError: Miss file name.\003[0m\n");
         } else if (n == 3) {
-            std::pair<std::string, std::string> pair = decFileName((std::string)(a[2]));
+            std::pair<std::string, std::string> pair = decFileName((std::string)
+              (a[2]));
             run(pair.first, pair.second);
         } else {
-            printf("\033[33mError: Unknown \"%s\" for command \"run\".\033[0m\n", a[3]);
+            printf("\e[33mError: Unknown \"%s\" for command \"run\".\e[0m\n",
+              a[3]);
         }
     } else if (tmp == (std::string)("compile")) {
         if (n == 2) {
-            printf("\033[33mError: Miss file name.\003[0m\n");
+            printf("\e[33mError: Miss file name.\003[0m\n");
         } else if (n == 3) {
-            std::pair<std::string, std::string> pair = decFileName((std::string)(a[2]));
+            std::pair<std::string, std::string> pair =
+              decFileName((std::string)(a[2]));
             compile(pair.first, pair.second);
         } else {
-            printf("\033[33mError: Unknown \"%s\" for command \"compile\".\033[0m\n", a[3]);
-        }
-    }
-    else if (n == 3) {
-        if (op(a[1], (char*)"run")) {
-            std::string s = (std::string)"g++ -o " + (std::string)a[2] + (std::string)" " + (std::string)a[2] + (std::string)".cpp -lm -O3";
-            system(s.data());
-            printf("Complie is over.\n");
-            s = (std::string)a[2];
-            int c = clock();
-            system(s.data());
-            printf("The program is over in %dms.\n", clock() - c);
-            while (_kbhit()) {
-                getchar();
-            }
-            printf("Press any key to continue . . .");
-            _getch();
-            return 0;
-        } else if (op(a[1], (char*)"compile")) {
-            std::string s = (std::string)"g++ -o " + (std::string)a[2] + (std::string)" " + (std::string)a[2] + (std::string)".cpp -lm -O3";
-            system(s.data());
-            return 0;
+            printf("\e[33mError: Unknown \"%s\" for command \"compile\".\e[0m"
+              "\n", a[3]);
         }
     }
     return 0;
