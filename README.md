@@ -1,8 +1,8 @@
-# kwcmd ———— 一款在windows环境下快速帮助你code的命令行程序
+# kwcode -- a fast way to code
 
-- 版本号：v0.1.4
+- version: v0.1.4
 
-- 作者：keywet06@wekw
+- writer: [keywet06](https://github.com/keywet06)@[wekw](https://github.com/wekw)
 
 **注意：本程序中 ‘-’ 不与 ‘/’ 、‘\\’ 混用。**
 
