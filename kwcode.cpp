@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <conio.h>
+
 void usage() {
     printf("Usage: kwcode <command> [<args>]\n");
     printf("\n");
@@ -16,9 +17,7 @@ void version() {
     printf("KwCode version 0.1.5\n");
     printf("Copyright WeKw team.\n");
 }
-void help(std::string str) {
-
-}
+void help(std::string str) {}
 void clear() {
     system("rm -rf *.in /s");
     system("rm -rf *.out /s");
@@ -47,19 +46,19 @@ std::pair<std::string, std::string> decFileName(std::string x) {
 void compile(std::string first, std::string seconed) {
     if (seconed == (std::string)("cpp")) {
         std::string s = (std::string)("g++ -o \"") + (std::string)(first) +
-          (std::string)("\" \"") + (std::string)(first) +
-          (std::string)(".cpp\" -lm -O3");
+                        (std::string)("\" \"") + (std::string)(first) +
+                        (std::string)(".cpp\" -lm -O3");
         system(s.data());
     } else {
         printf("\e[33mError: KwCode doesn't support \"%s\" language.\e[0m\n",
-          seconed.data());
+               seconed.data());
     }
 }
 void run(std::string first, std::string seconed) {
     if (seconed == (std::string)("cpp")) {
         std::string s = (std::string)("g++ -o \"") + (std::string)(first) +
-        (std::string)("\" \"") + (std::string)(first) +
-        (std::string)(".cpp\" -lm -O3");
+                        (std::string)("\" \"") + (std::string)(first) +
+                        (std::string)(".cpp\" -lm -O3");
         system(s.data());
         printf("Complie is over.\n");
         s = '"' + (std::string)(first) + '"';
@@ -74,9 +73,10 @@ void run(std::string first, std::string seconed) {
         _getch();
     } else {
         printf("\e[31mError: KwCode doesn't support \"%s\" language.\e[0m\n",
-          seconed.data());
+               seconed.data());
     }
 }
+
 int main(int n, char* a[]) {
     int f = 0;
     if (n == 1) {
@@ -91,43 +91,57 @@ int main(int n, char* a[]) {
             help((std::string)(a[2]));
         } else {
             printf("\e[33mError: Unknown \"%s\" for command \"help\".\e[0m\n",
-              a[2]);
+                   a[2]);
         }
     } else if (tmp == (std::string)("version")) {
         if (n == 2) {
             version();
         } else {
-            printf("\e[33mError: Unknown \"%s\" for command \"version\".\e[0m"
-            "\n", a[2]);
+            printf(
+                "\e[33mError: Unknown \"%s\" for command \"version\".\e[0m"
+                "\n",
+                a[2]);
         }
     } else if (tmp == (std::string)("clear")) {
         if (n == 2) {
             clear();
         } else {
             printf("\e[33mError: Unknown \"%s\" for command \"clear\".\e[0m\n",
-              a[2]);
+                   a[2]);
         }
     } else if (tmp == (std::string)("run")) {
         if (n == 2) {
             printf("\e[33mError: Miss file name.\003[0m\n");
         } else if (n == 3) {
-            std::pair<std::string, std::string> pair = decFileName((std::string)
-              (a[2]));
+            std::pair<std::string, std::string> pair =
+                decFileName((std::string)(a[2]));
             run(pair.first, pair.second);
         } else {
             printf("\e[33mError: Unknown \"%s\" for command \"run\".\e[0m\n",
-              a[3]);
+                   a[3]);
         }
     } else if (tmp == (std::string)("compile")) {
         if (n == 2) {
-            printf("\e[33mError: Miss file name.\003[0m\n");
+            printf("\e[33mError: Miss file name.\e[0m\n");
         } else if (n == 3) {
-            std::pair<std::string, std::string> pair =
-              decFileName((std::string)(a[2]));
+            std::pair<std::string, std::string> pair = decFileName(a[2]);
             compile(pair.first, pair.second);
         } else {
-            printf("\e[33mError: Unknown \"%s\" for command \"compile\".\e[0m"
-              "\n", a[3]);
+            printf(
+                "\e[33mError: Unknown \"%s\" for command \"compile\".\e[0m"
+                "\n",
+                a[3]);
+        }
+    } else if (tmp == (std::string)("match")) {
+        if (n < 5) {
+            printf("\e[33mError: Miss file name.\e[0m\n");
+        } else if (n == 5) {
+            std::pair<std::string, std::string>
+        } else {
+            printf(
+                "\e[33mError: Unknown \"%s\" for command \"match\".\e[0m"
+                "\n",
+                a[5]);
         }
     }
     return 0;
