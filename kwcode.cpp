@@ -136,7 +136,6 @@ int main(int n, char* a[]) {
         if (n < 5) {
             printf("\e[33mError: Miss file name.\e[0m\n");
         } else if (n == 5) {
-            std::pair<std::string, std::string>
         } else {
             printf(
                 "\e[33mError: Unknown \"%s\" for command \"match\".\e[0m"
